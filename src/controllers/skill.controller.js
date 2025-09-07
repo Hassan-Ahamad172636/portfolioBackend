@@ -6,7 +6,7 @@ import cloudinary from '../middlewares/cloudinaryMiddleware.js'; // Import Cloud
 // Common function to format skill response
 const formatSkillResponse = (skill, includeUser = true) => {
   const response = {
-    id: skill._id,
+    _id: skill._id,
     name: skill.name,
     level: skill.level,
     category: skill.category,
@@ -70,10 +70,9 @@ export const createSkill = asyncHandler(async (req, res) => {
   }
 
   // Validate level
-  const parsedLevel = parseFloat(level);
-  if (isNaN(parsedLevel) || parsedLevel < 0 || parsedLevel > 100) {
-    return res.status(400).json(generateApiResponse(false, 'Level must be between 0 and 100', null, 400));
-  }
+  // if () {
+  //   return res.status(400).json(generateApiResponse(false, 'Level must be between 0 and 100', null, 400));
+  // }
 
   // Validate category
   const validCategories = ['frontend', 'backend', 'qa', 'uiux', 'other'];
@@ -84,7 +83,7 @@ export const createSkill = asyncHandler(async (req, res) => {
   const skill = await Skill.create({
     user: req.user._id,
     name,
-    level: parsedLevel,
+    level,
     category: category.toLowerCase(),
     icon,
     status: status || 'private', // Default to private
@@ -119,15 +118,15 @@ export const updateSkill = asyncHandler(async (req, res) => {
 
   // Update fields
   skill.name = name || skill.name;
-  skill.level = level ? parseFloat(level) : skill.level;
+  skill.level = level || skill.level;
   skill.category = category ? category.toLowerCase() : skill.category;
   skill.icon = newIcon || skill.icon;
   skill.status = status || skill.status;
 
   // Validate level
-  if (level && (isNaN(skill.level) || skill.level < 0 || skill.level > 100)) {
-    return res.status(400).json(generateApiResponse(false, 'Level must be between 0 and 100', null, 400));
-  }
+  // if (level && (isNaN(skill.level) || skill.level < 0 || skill.level > 100)) {
+  //   return res.status(400).json(generateApiResponse(false, 'Level must be between 0 and 100', null, 400));
+  // }
 
   // Validate category
   const validCategories = ['frontend', 'backend', 'qa', 'uiux', 'other'];

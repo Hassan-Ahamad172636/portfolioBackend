@@ -5,7 +5,7 @@ import cloudinary from '../middlewares/cloudinaryMiddleware.js'; // Import Cloud
 
 // Common function to format testimonial response
 const formatTestimonialResponse = (testimonial) => ({
-  id: testimonial._id,
+  _id: testimonial._id,
   user: testimonial.user,
   name: testimonial.name,
   designation: testimonial.designation,

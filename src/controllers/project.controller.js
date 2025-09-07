@@ -5,7 +5,7 @@ import cloudinary from '../middlewares/cloudinaryMiddleware.js';
 
 // Common function to format project response
 const formatProjectResponse = (project) => ({
-  id: project._id,
+  _id: project._id,
   user: project.user,
   title: project.title,
   description: project.description,

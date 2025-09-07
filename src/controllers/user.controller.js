@@ -13,9 +13,10 @@ const generateToken = (id) => {
 // Common function to handle user data response
 const formatUserResponse = (user, token = null) => {
   const userData = {
-    id: user._id,
+    _id: user._id,
     name: user.name,
     email: user.email,
+    role: user.role,
     profilePicture: user.profilePicture,
   };
   return token ? { user: userData, token } : userData;

@@ -5,7 +5,7 @@ import cloudinary from '../middlewares/cloudinaryMiddleware.js'; // Import Cloud
 
 // Common function to format QA response
 const formatQAResponse = (qa) => ({
-  id: qa._id,
+  _id: qa._id,
   user: qa.user,
   title: qa.title,
   type: qa.type,
