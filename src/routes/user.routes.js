@@ -3,6 +3,7 @@ import { changePassword, createUser, deleteUser, forgotPassword, getAllUsers, ge
 import { protect } from '../middlewares/tokenMiddleware.js';
 import generateApiResponse from '../utils/generateApiResponse.js';
 import upload from '../middlewares/uploadMiddleware.js';
+import multer from 'multer';
 
 const router = express.Router();
 

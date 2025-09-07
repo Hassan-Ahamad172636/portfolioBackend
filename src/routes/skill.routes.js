@@ -3,6 +3,7 @@ import { getSkills, getSkillById, createSkill, updateSkill, deleteSkill, getPubl
 import { protect } from '../middlewares/tokenMiddleware.js';
 import upload from '../middlewares/uploadMiddleware.js'; // Importing Cloudinary upload middleware
 import generateApiResponse from '../utils/generateApiResponse.js';
+import multer from 'multer'
 
 const router = express.Router();
 
