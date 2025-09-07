@@ -37,7 +37,7 @@ export const getProjects = asyncHandler(async (req, res) => {
 // @route   GET /api/projects/public
 // @access  Public
 export const getPublicProjects = asyncHandler(async (req, res) => {
-  const projects = await Project.find({ status: 'public' }); // Only fetch public projects
+  const projects = await Project.find({}); // Only fetch public projects
 
   if (!projects || projects.length === 0) {
     return res.status(404).json(generateApiResponse(false, 'No public projects found', null, 404));

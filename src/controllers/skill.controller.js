@@ -37,7 +37,7 @@ export const getSkills = asyncHandler(async (req, res) => {
 // @route   GET /api/skills/public
 // @access  Public
 export const getPublicSkills = asyncHandler(async (req, res) => {
-  const skills = await Skill.find({ status: 'public' }).select('name category level icon');
+  const skills = await Skill.find({}).select('name category level icon');
 
   if (!skills || skills.length === 0) {
     return res.status(404).json(generateApiResponse(false, 'No public skills found', null, 404));
